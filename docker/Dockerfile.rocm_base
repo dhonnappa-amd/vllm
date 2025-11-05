@@ -21,6 +21,7 @@ ENV AITER_ROCM_ARCH=gfx942;gfx950
 
 ARG PYTHON_VERSION=3.12
 
+RUN echo "74a5, 00, AMD Instinct MI325" >> /usr/share/libdrm/amdgpu.ids
 RUN mkdir -p /app
 WORKDIR /app
 ENV DEBIAN_FRONTEND=noninteractive
