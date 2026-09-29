@@ -5673,3 +5673,3979 @@ steps:
     - vllm/model_executor/models/
   commands:
     - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+# ──────────────────────────────────────────────────────────────────────────────
+# MI350X SPX queue-load test: 50 runs of each step (runs 02-50)
+# Run-01 of each step is the original block above.
+# These are identical copies with a [run-NN] suffix to populate the queue
+# with a realistic mix of 1/2/4/8-GPU workloads for Kueue admission testing.
+# ──────────────────────────────────────────────────────────────────────────────
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-02]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-02]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-02]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-02]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-02]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-03]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-03]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-03]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-03]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-03]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-04]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-04]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-04]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-04]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-04]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-05]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-05]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-05]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-05]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-05]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-06]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-06]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-06]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-06]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-06]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-07]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-07]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-07]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-07]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-07]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-08]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-08]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-08]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-08]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-08]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-09]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-09]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-09]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-09]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-09]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-10]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-10]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-10]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-10]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-10]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-11]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-11]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-11]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-11]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-11]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-12]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-12]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-12]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-12]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-12]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-13]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-13]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-13]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-13]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-13]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-14]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-14]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-14]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-14]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-14]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-15]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-15]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-15]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-15]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-15]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-16]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-16]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-16]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-16]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-16]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-17]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-17]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-17]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-17]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-17]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-18]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-18]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-18]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-18]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-18]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-19]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-19]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-19]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-19]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-19]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-20]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-20]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-20]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-20]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-20]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-21]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-21]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-21]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-21]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-21]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-22]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-22]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-22]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-22]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-22]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-23]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-23]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-23]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-23]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-23]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-24]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-24]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-24]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-24]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-24]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-25]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-25]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-25]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-25]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-25]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-26]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-26]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-26]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-26]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-26]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-27]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-27]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-27]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-27]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-27]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-28]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-28]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-28]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-28]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-28]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-29]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-29]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-29]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-29]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-29]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-30]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-30]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-30]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-30]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-30]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-31]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-31]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-31]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-31]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-31]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-32]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-32]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-32]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-32]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-32]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-33]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-33]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-33]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-33]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-33]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-34]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-34]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-34]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-34]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-34]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-35]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-35]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-35]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-35]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-35]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-36]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-36]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-36]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-36]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-36]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-37]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-37]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-37]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-37]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-37]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-38]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-38]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-38]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-38]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-38]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-39]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-39]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-39]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-39]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-39]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-40]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-40]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-40]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-40]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-40]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-41]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-41]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-41]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-41]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-41]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-42]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-42]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-42]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-42]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-42]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-43]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-43]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-43]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-43]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-43]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-44]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-44]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-44]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-44]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-44]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-45]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-45]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-45]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-45]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-45]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-46]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-46]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-46]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-46]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-46]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-47]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-47]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-47]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-47]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-47]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-48]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-48]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-48]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-48]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-48]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-49]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-49]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-49]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-49]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-49]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
+
+- label: "MI350X SPX: basic sanity (1 GPU) [run-50]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  commands:
+    - python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available'; print('GPU count:', torch.cuda.device_count())"
+    - python3 -c "import vllm; print('vLLM version:', vllm.__version__)"
+    - pytest -v -s test_utils/test_import.py --timeout=120
+
+- label: "MI350X SPX: online serving (1 GPU) [run-50]"
+  agent_pool: mi350x_1
+  num_gpus: 1
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "1"
+  source_file_dependencies:
+    - vllm/entrypoints/openai/
+    - vllm/engine/
+    - vllm/v1/engine/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s async_engine/ --timeout=600
+    - pytest -v -s entrypoints/openai/ --timeout=600 -x
+
+- label: "MI350X SPX: core ops (2 GPU) [run-50]"
+  agent_pool: mi350x_2
+  num_gpus: 2
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "2"
+  source_file_dependencies:
+    - vllm/model_executor/layers/
+    - vllm/worker/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s kernels/ -k "not cutlass" --timeout=600
+    - pytest -v -s models/ -k "not llava" --timeout=900
+
+- label: "MI350X SPX: tensor parallel (4 GPU) [run-50]"
+  agent_pool: mi350x_4
+  num_gpus: 4
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "4"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+    - vllm/v1/worker/
+  commands:
+    - pytest -v -s distributed/test_basic_distributed_correctness.py --timeout=900
+    - pytest -v -s distributed/test_tensor_parallel.py --timeout=900
+
+- label: "MI350X SPX: pipeline parallel / full node (8 GPU) [run-50]"
+  agent_pool: mi350x_8
+  num_gpus: 8
+  dind: false
+  mirror_hardwares: [amdmi350x]
+  optional: true
+  working_dir: /vllm-workspace/tests
+  agent_tags:
+    gpu_size: "8"
+  source_file_dependencies:
+    - vllm/distributed/
+    - vllm/model_executor/models/
+  commands:
+    - pytest -v -s distributed/test_pipeline_parallel.py --timeout=1800
