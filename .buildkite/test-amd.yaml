@@ -26,6 +26,14 @@
 # working_dir(str): specify the place where the command should execute, default to /vllm-workspace/tests
 # source_file_dependencies(list): the list of prefixes to opt-in the test for, if empty, the test will always run.
 
+# agent_pool → Buildkite queue mapping (resolved by test-template-amd.j2 in vllm-project/ci-infra):
+#   mi250_1  →  queue: amd_mi250  gpu_size: "1"
+#   mi250_2  →  queue: amd_mi250  gpu_size: "2"
+#   mi250_4  →  queue: amd_mi250  gpu_size: "4"
+#   mi250_8  →  queue: amd_mi250  gpu_size: "8"
+# All MI250 pools route to the single consolidated Buildkite queue 'amd_mi250'.
+# No changes to this file are needed to enable queue consolidation.
+
 # When adding a test
 # - If the test belongs to an existing group, add it there
 # - If the test is short, add to any existing step
