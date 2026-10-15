@@ -123,7 +123,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -139,7 +138,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -155,7 +153,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -171,7 +168,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -187,7 +183,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -203,7 +198,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -219,7 +213,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -235,7 +228,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -251,7 +243,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -267,7 +258,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -283,7 +273,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -299,7 +288,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -315,7 +303,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - .buildkite/scripts/docker-build-metadata-args.sh
@@ -338,7 +325,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - .buildkite/scripts/docker-build-metadata-args.sh
@@ -361,7 +347,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - .buildkite/scripts/docker-build-metadata-args.sh
@@ -384,7 +369,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - .buildkite/scripts/docker-build-metadata-args.sh
@@ -407,7 +391,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - .buildkite/scripts/docker-build-metadata-args.sh
@@ -430,7 +413,6 @@ steps:
   dind: false
   agent_pool: mi250_1
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - .buildkite/scripts/docker-build-metadata-args.sh
@@ -452,7 +434,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/compilation/
@@ -470,7 +451,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/compilation/
@@ -488,7 +468,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/compilation/
@@ -506,7 +485,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/compilation/
@@ -524,7 +502,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/compilation/
@@ -542,7 +519,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/compilation/
@@ -561,7 +537,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/utils/import_utils.py
@@ -578,7 +553,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/utils/import_utils.py
@@ -595,7 +569,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/utils/import_utils.py
@@ -612,7 +585,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/utils/import_utils.py
@@ -629,7 +601,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/utils/import_utils.py
@@ -646,7 +617,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/utils/import_utils.py
@@ -683,7 +653,6 @@ steps:
   - vllm/v1/attention/backends/flex_attention.py
   - vllm/v1/attention/ops/
   - vllm/platforms/rocm.py
-  optional: true
   commands:
   - pytest -v -s models/language/generation_ppl_test
 
@@ -713,7 +682,6 @@ steps:
   - vllm/v1/attention/backends/flex_attention.py
   - vllm/v1/attention/ops/
   - vllm/platforms/rocm.py
-  optional: true
   commands:
   - pytest -v -s models/language/generation_ppl_test
 
@@ -743,7 +711,6 @@ steps:
   - vllm/v1/attention/backends/flex_attention.py
   - vllm/v1/attention/ops/
   - vllm/platforms/rocm.py
-  optional: true
   commands:
   - pytest -v -s models/language/generation_ppl_test
 
@@ -773,7 +740,6 @@ steps:
   - vllm/v1/attention/backends/flex_attention.py
   - vllm/v1/attention/ops/
   - vllm/platforms/rocm.py
-  optional: true
   commands:
   - pytest -v -s models/language/generation_ppl_test
 
@@ -803,7 +769,6 @@ steps:
   - vllm/v1/attention/backends/flex_attention.py
   - vllm/v1/attention/ops/
   - vllm/platforms/rocm.py
-  optional: true
   commands:
   - pytest -v -s models/language/generation_ppl_test
 
@@ -833,7 +798,6 @@ steps:
   - vllm/v1/attention/backends/flex_attention.py
   - vllm/v1/attention/ops/
   - vllm/platforms/rocm.py
-  optional: true
   commands:
   - pytest -v -s models/language/generation_ppl_test
 
@@ -842,7 +806,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/
@@ -856,7 +819,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/
@@ -870,7 +832,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/
@@ -884,7 +845,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/
@@ -898,7 +858,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/
@@ -912,7 +871,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/
@@ -926,7 +884,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/attention
@@ -945,7 +902,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/attention
@@ -964,7 +920,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/attention
@@ -983,7 +938,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/attention
@@ -1002,7 +956,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/attention
@@ -1021,7 +974,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/attention
@@ -1040,7 +992,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - tests/v1/cudagraph
@@ -1061,7 +1012,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - tests/v1/cudagraph
@@ -1082,7 +1032,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - tests/v1/cudagraph
@@ -1103,7 +1052,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - tests/v1/cudagraph
@@ -1124,7 +1072,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - tests/v1/cudagraph
@@ -1145,7 +1092,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - tests/v1/cudagraph
@@ -1166,7 +1112,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1180,7 +1125,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1194,7 +1138,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1208,7 +1151,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1222,7 +1164,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1236,7 +1177,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1250,7 +1190,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1264,7 +1203,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1278,7 +1216,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1292,7 +1229,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1306,7 +1242,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1320,7 +1255,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1334,7 +1268,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1348,7 +1281,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1362,7 +1294,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1376,7 +1307,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1390,7 +1320,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1404,7 +1333,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1418,7 +1346,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1441,7 +1368,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1464,7 +1390,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1487,7 +1412,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1510,7 +1434,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1533,7 +1456,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -1556,7 +1478,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -1574,7 +1495,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -1592,7 +1512,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -1610,7 +1529,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -1628,7 +1546,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -1646,7 +1563,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -1664,7 +1580,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -1685,7 +1600,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -1706,7 +1620,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -1727,7 +1640,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -1748,7 +1660,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -1769,7 +1680,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_1
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -1795,7 +1705,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -1811,7 +1720,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -1827,7 +1735,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -1843,7 +1750,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -1859,7 +1765,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -1875,7 +1780,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -1891,7 +1795,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -1907,7 +1810,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -1923,7 +1825,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -1939,7 +1840,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -1955,7 +1855,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -1971,7 +1870,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace"
   source_file_dependencies:
   - rust/
@@ -1987,7 +1885,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - .buildkite/scripts/docker-build-metadata-args.sh
@@ -2010,7 +1907,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - .buildkite/scripts/docker-build-metadata-args.sh
@@ -2033,7 +1929,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - .buildkite/scripts/docker-build-metadata-args.sh
@@ -2056,7 +1951,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - .buildkite/scripts/docker-build-metadata-args.sh
@@ -2079,7 +1973,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - .buildkite/scripts/docker-build-metadata-args.sh
@@ -2102,7 +1995,6 @@ steps:
   dind: false
   agent_pool: mi250_2
   no_gpu: true
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - .buildkite/scripts/docker-build-metadata-args.sh
@@ -2124,7 +2016,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/compilation/
@@ -2142,7 +2033,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/compilation/
@@ -2160,7 +2050,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/compilation/
@@ -2178,7 +2067,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/compilation/
@@ -2196,7 +2084,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/compilation/
@@ -2214,7 +2101,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/compilation/
@@ -2233,7 +2119,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/utils/import_utils.py
@@ -2250,7 +2135,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/utils/import_utils.py
@@ -2267,7 +2151,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/utils/import_utils.py
@@ -2284,7 +2167,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/utils/import_utils.py
@@ -2301,7 +2183,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/utils/import_utils.py
@@ -2318,7 +2199,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/utils/import_utils.py
@@ -2355,7 +2235,6 @@ steps:
   - vllm/v1/attention/backends/flex_attention.py
   - vllm/v1/attention/ops/
   - vllm/platforms/rocm.py
-  optional: true
   commands:
   - pytest -v -s models/language/generation_ppl_test
 
@@ -2385,7 +2264,6 @@ steps:
   - vllm/v1/attention/backends/flex_attention.py
   - vllm/v1/attention/ops/
   - vllm/platforms/rocm.py
-  optional: true
   commands:
   - pytest -v -s models/language/generation_ppl_test
 
@@ -2415,7 +2293,6 @@ steps:
   - vllm/v1/attention/backends/flex_attention.py
   - vllm/v1/attention/ops/
   - vllm/platforms/rocm.py
-  optional: true
   commands:
   - pytest -v -s models/language/generation_ppl_test
 
@@ -2445,7 +2322,6 @@ steps:
   - vllm/v1/attention/backends/flex_attention.py
   - vllm/v1/attention/ops/
   - vllm/platforms/rocm.py
-  optional: true
   commands:
   - pytest -v -s models/language/generation_ppl_test
 
@@ -2475,7 +2351,6 @@ steps:
   - vllm/v1/attention/backends/flex_attention.py
   - vllm/v1/attention/ops/
   - vllm/platforms/rocm.py
-  optional: true
   commands:
   - pytest -v -s models/language/generation_ppl_test
 
@@ -2505,7 +2380,6 @@ steps:
   - vllm/v1/attention/backends/flex_attention.py
   - vllm/v1/attention/ops/
   - vllm/platforms/rocm.py
-  optional: true
   commands:
   - pytest -v -s models/language/generation_ppl_test
 
@@ -2514,7 +2388,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/
@@ -2528,7 +2401,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/
@@ -2542,7 +2414,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/
@@ -2556,7 +2427,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/
@@ -2570,7 +2440,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/
@@ -2584,7 +2453,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/
@@ -2598,7 +2466,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/attention
@@ -2617,7 +2484,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/attention
@@ -2636,7 +2502,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/attention
@@ -2655,7 +2520,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/attention
@@ -2674,7 +2538,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/attention
@@ -2693,7 +2556,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/attention
@@ -2712,7 +2574,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - tests/v1/cudagraph
@@ -2733,7 +2594,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - tests/v1/cudagraph
@@ -2754,7 +2614,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - tests/v1/cudagraph
@@ -2775,7 +2634,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - tests/v1/cudagraph
@@ -2796,7 +2654,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - tests/v1/cudagraph
@@ -2817,7 +2674,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - tests/v1/cudagraph
@@ -2838,7 +2694,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -2852,7 +2707,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -2866,7 +2720,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -2880,7 +2733,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -2894,7 +2746,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -2908,7 +2759,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -2922,7 +2772,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -2936,7 +2785,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -2950,7 +2798,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -2964,7 +2811,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -2978,7 +2824,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -2992,7 +2837,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -3006,7 +2850,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -3020,7 +2863,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -3034,7 +2876,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -3048,7 +2889,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -3062,7 +2902,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -3076,7 +2915,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -3090,7 +2928,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -3113,7 +2950,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -3136,7 +2972,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -3159,7 +2994,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -3182,7 +3016,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -3205,7 +3038,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/
@@ -3228,7 +3060,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -3246,7 +3077,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -3264,7 +3094,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -3282,7 +3111,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -3300,7 +3128,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -3318,7 +3145,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -3336,7 +3162,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -3357,7 +3182,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -3378,7 +3202,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -3399,7 +3222,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -3420,7 +3242,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -3441,7 +3262,6 @@ steps:
   mirror_hardwares: [amdexperimental, amdproduction, amdgfx90anightly, amdmi250]
   dind: false
   agent_pool: mi250_2
-  optional: true
   working_dir: "/vllm-workspace/tests"
   source_file_dependencies:
   - vllm/v1/spec_decode/
@@ -3480,7 +3300,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3505,7 +3324,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3530,7 +3348,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3555,7 +3372,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3580,7 +3396,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3605,7 +3420,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3630,7 +3444,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3655,7 +3468,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3680,7 +3492,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3705,7 +3516,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3730,7 +3540,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3755,7 +3564,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3780,7 +3588,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3805,7 +3612,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3830,7 +3636,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3855,7 +3660,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3880,7 +3684,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3905,7 +3708,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3930,7 +3732,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3955,7 +3756,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -3980,7 +3780,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4005,7 +3804,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4030,7 +3828,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4055,7 +3852,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4080,7 +3876,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4105,7 +3900,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4130,7 +3924,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4155,7 +3948,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4180,7 +3972,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4205,7 +3996,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4230,7 +4020,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4255,7 +4044,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4280,7 +4068,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4305,7 +4092,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4330,7 +4116,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4355,7 +4140,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4380,7 +4164,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4405,7 +4188,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4430,7 +4212,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4455,7 +4236,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4480,7 +4260,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4505,7 +4284,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4530,7 +4308,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4555,7 +4332,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4580,7 +4356,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4605,7 +4380,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4630,7 +4404,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4655,7 +4428,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4680,7 +4452,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4705,7 +4476,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4734,7 +4504,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4759,7 +4528,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4784,7 +4552,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4809,7 +4576,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4834,7 +4600,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4859,7 +4624,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4884,7 +4648,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4909,7 +4672,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4934,7 +4696,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4959,7 +4720,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -4984,7 +4744,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -5009,7 +4768,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -5034,7 +4792,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -5059,7 +4816,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -5084,7 +4840,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -5109,7 +4864,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -5134,7 +4888,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -5159,7 +4912,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -5184,7 +4936,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
@@ -5209,7 +4960,6 @@ steps:
   - vllm/_aiter_ops.py
   - vllm/platforms/rocm.py
   - tests/v1/distributed/test_pp_dp_v2.py
-  optional: true
   commands:
   - pytest -v -s distributed/test_pp_cudagraph.py
   - pytest -v -s distributed/test_pipeline_parallel.py
