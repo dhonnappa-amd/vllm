@@ -1,0 +1,3607 @@
+group: Hardware - AMD MI355 Load Test
+# Load-test steps for verifying the unified amd_mi355 Buildkite queue.
+# Each step targets MI355 only (device: mi355_N) and is always required
+# (no optional flag, no source_file_dependencies).
+# 200 × 1-GPU, 100 × 2-GPU, 70 × 4-GPU, 30 × 8-GPU = 400 jobs total.
+# Purpose: confirm all jobs land on queue=amd_mi355 with the correct gpu_size
+# tag when ci-infra branch mi355_consolidate is active.
+steps:
+- label: "(MI355) Load Test 1GPU -1"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -2"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -3"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -4"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -5"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -6"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -7"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -8"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -9"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -10"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -11"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -12"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -13"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -14"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -15"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -16"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -17"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -18"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -19"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -20"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -21"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -22"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -23"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -24"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -25"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -26"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -27"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -28"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -29"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -30"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -31"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -32"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -33"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -34"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -35"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -36"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -37"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -38"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -39"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -40"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -41"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -42"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -43"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -44"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -45"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -46"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -47"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -48"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -49"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -50"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -51"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -52"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -53"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -54"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -55"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -56"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -57"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -58"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -59"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -60"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -61"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -62"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -63"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -64"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -65"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -66"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -67"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -68"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -69"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -70"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -71"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -72"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -73"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -74"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -75"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -76"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -77"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -78"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -79"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -80"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -81"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -82"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -83"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -84"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -85"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -86"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -87"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -88"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -89"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -90"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -91"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -92"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -93"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -94"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -95"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -96"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -97"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -98"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -99"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -100"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -101"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -102"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -103"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -104"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -105"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -106"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -107"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -108"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -109"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -110"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -111"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -112"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -113"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -114"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -115"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -116"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -117"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -118"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -119"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -120"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -121"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -122"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -123"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -124"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -125"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -126"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -127"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -128"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -129"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -130"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -131"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -132"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -133"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -134"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -135"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -136"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -137"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -138"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -139"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -140"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -141"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -142"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -143"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -144"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -145"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -146"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -147"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -148"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -149"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -150"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -151"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -152"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -153"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -154"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -155"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -156"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -157"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -158"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -159"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -160"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -161"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -162"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -163"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -164"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -165"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -166"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -167"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -168"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -169"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -170"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -171"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -172"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -173"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -174"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -175"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -176"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -177"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -178"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -179"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -180"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -181"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -182"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -183"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -184"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -185"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -186"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -187"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -188"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -189"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -190"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -191"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -192"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -193"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -194"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -195"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -196"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -197"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -198"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -199"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 1GPU -200"
+  device: mi355_1
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -1"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -2"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -3"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -4"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -5"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -6"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -7"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -8"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -9"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -10"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -11"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -12"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -13"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -14"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -15"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -16"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -17"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -18"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -19"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -20"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -21"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -22"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -23"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -24"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -25"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -26"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -27"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -28"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -29"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -30"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -31"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -32"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -33"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -34"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -35"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -36"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -37"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -38"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -39"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -40"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -41"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -42"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -43"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -44"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -45"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -46"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -47"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -48"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -49"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -50"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -51"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -52"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -53"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -54"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -55"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -56"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -57"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -58"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -59"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -60"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -61"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -62"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -63"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -64"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -65"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -66"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -67"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -68"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -69"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -70"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -71"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -72"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -73"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -74"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -75"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -76"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -77"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -78"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -79"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -80"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -81"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -82"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -83"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -84"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -85"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -86"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -87"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -88"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -89"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -90"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -91"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -92"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -93"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -94"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -95"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -96"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -97"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -98"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -99"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 2GPU -100"
+  device: mi355_2
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -1"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -2"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -3"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -4"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -5"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -6"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -7"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -8"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -9"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -10"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -11"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -12"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -13"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -14"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -15"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -16"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -17"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -18"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -19"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -20"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -21"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -22"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -23"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -24"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -25"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -26"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -27"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -28"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -29"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -30"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -31"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -32"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -33"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -34"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -35"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -36"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -37"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -38"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -39"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -40"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -41"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -42"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -43"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -44"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -45"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -46"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -47"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -48"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -49"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -50"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -51"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -52"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -53"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -54"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -55"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -56"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -57"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -58"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -59"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -60"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -61"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -62"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -63"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -64"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -65"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -66"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -67"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -68"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -69"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 4GPU -70"
+  device: mi355_4
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -1"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -2"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -3"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -4"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -5"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -6"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -7"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -8"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -9"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -10"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -11"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -12"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -13"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -14"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -15"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -16"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -17"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -18"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -19"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -20"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -21"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -22"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -23"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -24"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -25"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -26"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -27"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -28"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -29"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: "(MI355) Load Test 8GPU -30"
+  device: mi355_8
+  dind: false
+  depends_on:
+    - image-build-amd
+  timeout_in_minutes: 5
+  commands:
+    - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"

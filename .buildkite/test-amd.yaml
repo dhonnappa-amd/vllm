@@ -6321,3 +6321,4008 @@ steps:
   commands:
   - pytest -v -s tests/jit_monitor/test_no_runtime_jit_rocm.py --timeout=300
   - pytest -v -s tests/jit_monitor/test_flydsl_contract.py
+
+  #########################################################################
+  #  MI355 load-test block — queue unification smoke test                  
+  #  200 × 1-GPU, 100 × 2-GPU, 70 × 4-GPU, 30 × 8-GPU = 400 jobs total   
+  #########################################################################
+
+- label: ":amd: (MI355) Load Test 1GPU -1"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -2"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -3"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -4"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -5"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -6"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -7"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -8"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -9"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -10"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -11"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -12"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -13"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -14"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -15"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -16"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -17"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -18"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -19"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -20"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -21"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -22"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -23"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -24"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -25"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -26"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -27"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -28"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -29"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -30"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -31"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -32"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -33"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -34"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -35"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -36"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -37"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -38"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -39"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -40"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -41"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -42"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -43"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -44"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -45"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -46"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -47"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -48"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -49"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -50"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -51"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -52"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -53"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -54"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -55"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -56"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -57"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -58"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -59"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -60"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -61"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -62"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -63"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -64"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -65"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -66"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -67"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -68"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -69"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -70"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -71"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -72"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -73"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -74"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -75"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -76"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -77"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -78"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -79"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -80"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -81"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -82"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -83"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -84"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -85"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -86"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -87"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -88"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -89"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -90"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -91"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -92"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -93"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -94"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -95"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -96"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -97"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -98"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -99"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -100"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -101"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -102"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -103"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -104"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -105"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -106"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -107"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -108"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -109"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -110"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -111"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -112"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -113"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -114"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -115"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -116"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -117"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -118"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -119"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -120"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -121"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -122"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -123"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -124"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -125"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -126"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -127"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -128"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -129"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -130"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -131"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -132"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -133"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -134"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -135"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -136"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -137"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -138"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -139"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -140"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -141"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -142"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -143"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -144"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -145"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -146"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -147"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -148"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -149"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -150"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -151"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -152"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -153"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -154"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -155"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -156"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -157"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -158"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -159"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -160"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -161"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -162"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -163"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -164"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -165"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -166"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -167"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -168"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -169"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -170"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -171"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -172"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -173"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -174"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -175"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -176"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -177"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -178"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -179"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -180"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -181"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -182"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -183"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -184"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -185"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -186"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -187"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -188"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -189"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -190"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -191"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -192"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -193"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -194"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -195"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -196"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -197"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -198"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -199"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 1GPU -200"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_1
+  num_gpus: 1
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=1, f\"Need 1 GPUs, got {got}\"; print(f\"MI355 load-test 1GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -1"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -2"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -3"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -4"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -5"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -6"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -7"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -8"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -9"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -10"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -11"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -12"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -13"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -14"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -15"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -16"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -17"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -18"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -19"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -20"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -21"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -22"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -23"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -24"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -25"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -26"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -27"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -28"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -29"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -30"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -31"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -32"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -33"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -34"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -35"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -36"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -37"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -38"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -39"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -40"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -41"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -42"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -43"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -44"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -45"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -46"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -47"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -48"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -49"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -50"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -51"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -52"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -53"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -54"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -55"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -56"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -57"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -58"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -59"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -60"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -61"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -62"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -63"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -64"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -65"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -66"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -67"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -68"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -69"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -70"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -71"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -72"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -73"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -74"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -75"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -76"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -77"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -78"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -79"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -80"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -81"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -82"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -83"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -84"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -85"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -86"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -87"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -88"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -89"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -90"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -91"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -92"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -93"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -94"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -95"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -96"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -97"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -98"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -99"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 2GPU -100"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=2, f\"Need 2 GPUs, got {got}\"; print(f\"MI355 load-test 2GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -1"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -2"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -3"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -4"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -5"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -6"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -7"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -8"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -9"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -10"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -11"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -12"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -13"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -14"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -15"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -16"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -17"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -18"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -19"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -20"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -21"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -22"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -23"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -24"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -25"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -26"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -27"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -28"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -29"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -30"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -31"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -32"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -33"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -34"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -35"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -36"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -37"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -38"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -39"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -40"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -41"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -42"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -43"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -44"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -45"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -46"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -47"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -48"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -49"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -50"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -51"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -52"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -53"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -54"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -55"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -56"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -57"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -58"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -59"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -60"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -61"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -62"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -63"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -64"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -65"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -66"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -67"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -68"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -69"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 4GPU -70"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=4, f\"Need 4 GPUs, got {got}\"; print(f\"MI355 load-test 4GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -1"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -2"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -3"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -4"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -5"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -6"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -7"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -8"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -9"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -10"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -11"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -12"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -13"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -14"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -15"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -16"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -17"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -18"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -19"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -20"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -21"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -22"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -23"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -24"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -25"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -26"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -27"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -28"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -29"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
+
+- label: ":amd: (MI355) Load Test 8GPU -30"
+  timeout_in_minutes: 5
+  mirror_hardwares: [amdmi355]
+  dind: false
+  agent_pool: mi355_8
+  num_gpus: 8
+  working_dir: "/vllm-workspace"
+  commands:
+  - python3 -c "import torch; got=torch.cuda.device_count(); assert got>=8, f\"Need 8 GPUs, got {got}\"; print(f\"MI355 load-test 8GPU: {got} device(s) available\")"
