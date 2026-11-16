@@ -6327,3 +6327,1311 @@ steps:
   commands:
   - pytest -v -s tests/jit_monitor/test_no_runtime_jit_rocm.py --timeout=300
   - pytest -v -s tests/jit_monitor/test_flydsl_contract.py
+
+#########################################################################################################################################
+#                                                                                                                                       #
+#                                   MI355 DPX Multi-GPU tests (gfx950 - 2 and 4 GPU DPX partitions)                                   #
+#                                   agent_pool: mi355_dpx_2  /  mi355_dpx_4                                                           #
+#                                   DPX variants of the mi355_2 / mi355_4 steps above.                                               #
+#                                                                                                                                       #
+#########################################################################################################################################
+
+- label: ":amd: (MI355 DPX) Attention Benchmark Smoke" # TBD
+  timeout_in_minutes: 25
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/"
+  source_file_dependencies:
+  - benchmarks/attention_benchmarks/
+  - vllm/v1/attention/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  commands:
+  - python3 benchmarks/attention_benchmarks/benchmark.py --backends ROCM_ATTN ROCM_AITER_FA ROCM_AITER_UNIFIED_ATTN --batch-specs "8q1s1k"
+
+#----------------------------------------------------------  mi355 · compile  ----------------------------------------------------------#
+
+- label: ":amd: (MI355 DPX) Fusion E2E TP2 AR-RMS FP8 Config Sweep"
+  timeout_in_minutes: 45
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/"
+  source_file_dependencies:
+  - vllm/compilation/
+  - vllm/model_executor/
+  - vllm/distributed/
+  - vllm/v1/attention/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  - tests/compile/fusions_e2e/
+  - tests/utils.py
+  - tests/conftest.py
+  - csrc/quantization/
+  commands:
+  # Existing MI300 jobs own BF16; TP2 Quick owns the excluded Llama cell.
+  - amd-smi
+  - VLLM_ROCM_USE_AITER=1 VLLM_ROCM_USE_AITER_CUSTOM_AR=1 pytest -v -s tests/compile/fusions_e2e/test_tp2_ar_rms.py -k 'test_tp2_ar_rms_fp8_fusions and Llama-3 and ROCM_AITER_UNIFIED_ATTN and (dynamo_partition or +quant_fp8 or +rms_norm)'
+
+- label: ":amd: (MI355 DPX) Fusion E2E TP2 FP8 BF16 rewrites"
+  timeout_in_minutes: 45
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/"
+  source_file_dependencies:
+  - vllm/compilation/
+  - vllm/model_executor/
+  - vllm/distributed/
+  - vllm/v1/attention/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  - tests/compile/fusions_e2e/
+  - tests/utils.py
+  - tests/conftest.py
+  - csrc/quantization/
+  commands:
+  # Dummy-weight rewrite coverage; trained FP8 AR/RMS equivalence is unresolved.
+  # TODO: FP4 output-quant and trained MXFP4 AR/RMS fusion remain unsupported.
+  - amd-smi
+  - VLLM_ROCM_USE_AITER=1 VLLM_ROCM_USE_AITER_CUSTOM_AR=1 pytest -v -s tests/compile/fusions_e2e/test_tp2_ar_rms.py -k 'test_tp2_ar_rms_fp8_fusions and qwen3 and ROCM_AITER_UNIFIED_ATTN and +quant_fp8 and (dynamo_partition or not +rms_norm)'
+
+- label: ":amd: (MI355 DPX) Fusion and Compile FP8"
+  timeout_in_minutes: 45
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/"
+  source_file_dependencies:
+  - vllm/compilation/
+  - vllm/model_executor/layers/
+  - vllm/v1/attention/
+  - vllm/distributed/
+  - vllm/_aiter_ops.py
+  - tests/compile/passes/
+  - tests/compile/correctness_e2e/test_attn_quant.py
+  - vllm/model_executor/kernels/linear/
+  - vllm/model_executor/models/llama.py
+  commands:
+  - amd-smi
+  - >-
+    pytest -v -s
+    tests/compile/passes/test_fusion_attn.py
+    tests/compile/passes/test_silu_mul_quant_fusion.py
+    tests/compile/passes/test_silu_mul_quant_manual_fusion.py
+  - pytest -v -s tests/compile/correctness_e2e/test_attn_quant.py
+
+- label: ":amd: (MI355 DPX) GEMM-RS-AR"
+  timeout_in_minutes: 20
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace/"
+  source_file_dependencies:
+  - .buildkite/test-amd.yaml
+  - tests/kernels/test_gemm_rs_ar.py
+  - tests/kernels/test_rocm_gemm_rs_ar.py
+  - tests/conftest.py
+  - vllm/models/common/ops/sequence_parallel.py
+  - vllm/model_executor/layers/linear.py
+  - vllm/model_executor/layers/utils.py
+  - vllm/model_executor/layers/quantization/online/
+  - vllm/model_executor/layers/quantization/utils/mxfp8_utils.py
+  - vllm/model_executor/kernels/linear/
+  - vllm/distributed/
+  - vllm/_aiter_ops.py
+  - vllm/_custom_ops.py
+  - csrc/rocm/skinny_gemms.cuh
+  - csrc/rocm/skinny_gemms_int4.cu
+  - csrc/rocm/skinny_gemms_llmm1.cu
+  - csrc/rocm/skinny_gemms_wvsplitk.cu
+  - csrc/rocm/skinny_gemms_wvsplitkq.cu
+  - csrc/rocm/skinny_gemms_wvsplitkrc.cu
+  - vllm/platforms/rocm.py
+  commands:
+  - pytest -v -s tests/kernels/test_rocm_gemm_rs_ar.py
+
+- label: ":amd: (MI355 DPX) Qwen4 Exp SP"
+  timeout_in_minutes: 30
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/config/parallel.py
+  - vllm/models/common/ops/sequence_parallel.py
+  - vllm/models/qwen4_exp/
+  - vllm/model_executor/layers/vocab_parallel_embedding.py
+  - vllm/model_executor/models/qwen3_next.py
+  - vllm/platforms/rocm.py
+  - tests/models/qwen4_exp/test_ple.py
+  - tests/models/qwen4_exp/test_tpsp.py
+  commands:
+  - pytest -v -s models/qwen4_exp/test_tpsp.py
+
+- label: ":amd: (MI355 DPX) Distributed DP Basic" # TBD
+  timeout_in_minutes: 45
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  optional: true
+  num_gpus: 2
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/distributed/
+  - vllm/engine/
+  - vllm/v1/executor/
+  - vllm/v1/worker/worker_base.py
+  - vllm/v1/engine/
+  - vllm/v1/worker/
+  - tests/v1/distributed
+  - tests/entrypoints/launchers/api_server/test_multi_api_servers.py
+  - vllm/platforms/rocm.py
+  - tests/v1/e2e/general/test_sharded_sampling.py
+  - tests/v1/e2e/spec_decode/test_sharded_sampling.py
+  - tests/v1/e2e/spec_decode/utils.py
+  commands:
+  - export NCCL_CUMEM_HOST_ENABLE=0
+  - TP_SIZE=1 DP_SIZE=2 pytest -v -s v1/distributed/test_async_llm_dp.py
+  - TP_SIZE=1 DP_SIZE=2 pytest -v -s v1/distributed/test_eagle_dp.py
+  - TP_SIZE=1 DP_SIZE=2 pytest -v -s v1/distributed/test_external_lb_dp.py
+  - DP_SIZE=2 pytest -v -s entrypoints/launchers/api_server/test_multi_api_servers.py
+  - pytest -v -s v1/e2e/general/test_sharded_sampling.py
+  - pytest -v -s v1/e2e/spec_decode/test_sharded_sampling.py
+
+- label: ":amd: (MI355 DPX) Distributed Preload" # TBD
+  timeout_in_minutes: 30
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  optional: true
+  num_gpus: 2
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/model_executor/model_loader/weight_cache/
+  - vllm/model_executor/layers/fused_moe/expert_map_manager.py
+  - tests/model_executor/model_loader/test_weight_cache.py
+  - vllm/platforms/rocm.py
+  commands:
+  - pytest -v -s model_executor/model_loader/test_weight_cache.py -m 'distributed(num_gpus=2)'
+
+- label: ":amd: (MI355 DPX) MoRI EP Healthy Baseline"
+  timeout_in_minutes: 10
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - csrc/moe/
+  - csrc/rocm/
+  - tests/kernels/moe/
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/model_executor/layers/quantization/
+  - vllm/distributed/
+  - vllm/config/
+  - vllm/forward_context.py
+  - vllm/v1/worker/workspace.py
+  - vllm/utils/import_utils.py
+  - vllm/utils/math_utils.py
+  - vllm/utils/torch_utils.py
+  - vllm/platforms/
+  - vllm/_aiter_ops.py
+  optional: true
+  # TODO: Add fault injection, detection and recovery once MoRI supports them.
+  # This job currently checks healthy EP execution only.
+  commands:
+  - VLLM_WORKER_MULTIPROC_METHOD=spawn pytest -v -s -rs kernels/moe/test_moe_layer.py::test_moe_layer_mori_graph
+  - VLLM_TEST_ENABLE_MORI_MOE_LAYER=1 VLLM_WORKER_MULTIPROC_METHOD=spawn pytest -v -s -rs 'kernels/moe/test_moe_layer.py::test_moe_layer[False-mori_high_throughput-2-1-True]' --subtests='[32-512-512-8-2-bfloat16-None-False-False-False-False-mori_high_throughput-2-2-1]'
+
+- label: ":amd: (MI355 DPX) NixlConnector PD + Spec Decode acceptance" # TBD
+  timeout_in_minutes: 45
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/distributed/kv_transfer/kv_connector/v1/nixl/
+  - tests/v1/kv_connector/nixl_integration/
+  - vllm/platforms/rocm.py
+  commands:
+  - KV_CACHE_MEMORY_BYTES=8G ATTENTION_BACKEND=TRITON_ATTN bash v1/kv_connector/nixl_integration/config_sweep_spec_decode_test.sh
+
+- label: ":amd: (MI355 DPX) Distributed NixlConnector PD accuracy" # TBD
+  timeout_in_minutes: 60
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/distributed/kv_transfer/kv_connector/v1/nixl/
+  - tests/v1/kv_connector/nixl_integration/
+  - vllm/platforms/rocm.py
+  commands:
+  - python3 -m pytest -s -x v1/kv_connector/nixl_integration/test_nixl_imports.py
+  - ATTENTION_BACKEND=TRITON_ATTN pytest -v -s v1/kv_connector/nixl_integration/test_accuracy_sweep.py
+
+- label: ":amd: (MI355 DPX) Distributed AITER NixlConnector PD accuracy"
+  timeout_in_minutes: 60
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/distributed/kv_transfer/kv_connector/v1/nixl/
+  - tests/v1/kv_connector/nixl_integration/
+  - tests/v1/kv_connector/rocm_pd_accuracy_utils.py
+  - tests/utils.py
+  - vllm/v1/attention/backends/rocm_aiter_unified_attn.py
+  - vllm/platforms/rocm.py
+  - requirements/common.txt
+  commands:
+  - pytest -v -s v1/kv_connector/nixl_integration/test_accuracy_rocm.py
+
+- label: ":amd: (MI355 DPX) Distributed MooncakeConnector HIP PD accuracy"
+  timeout_in_minutes: 30
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/distributed/kv_transfer/kv_connector/v1/mooncake/
+  - tests/v1/kv_connector/mooncake_integration/
+  - tests/v1/kv_connector/rocm_pd_accuracy_utils.py
+  - tests/utils.py
+  - examples/disaggregated/mooncake_connector/
+  - vllm/v1/attention/backends/rocm_aiter_unified_attn.py
+  - vllm/platforms/rocm.py
+  - requirements/common.txt
+  commands:
+  - pytest -v -s v1/kv_connector/mooncake_integration/test_accuracy_rocm.py
+
+- label: ":amd: (MI355 DPX) DP EP Distributed NixlConnector PD accuracy" # TBD
+  timeout_in_minutes: 40
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/distributed/kv_transfer/kv_connector/v1/nixl/
+  - tests/v1/kv_connector/nixl_integration/
+  - vllm/platforms/rocm.py
+  commands:
+  - python3 -m pytest -s -x v1/kv_connector/nixl_integration/test_nixl_imports.py
+  - DP_EP=1 ATTENTION_BACKEND=TRITON_ATTN pytest -v -s v1/kv_connector/nixl_integration/test_accuracy_sweep.py
+
+- label: ":amd: (MI355 DPX) Kimi-Linear-48B-A3B Disaggregated DP EP"
+  timeout_in_minutes: 105
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/platforms/rocm.py
+  - vllm/models/kimi_k3/
+  - vllm/distributed/kv_transfer/kv_connector/v1/nixl/
+  - tests/v1/kv_connector/nixl_integration/
+  commands:
+  - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+  - export ENABLE_HMA_FLAG='1'
+  - export DP_EP='1'
+  - export GPU_MEMORY_UTILIZATION='0.9'
+  - export VLLM_SSM_CONV_STATE_LAYOUT='DS'
+  - export PREFILLER_TP_SIZE='2'
+  - export DECODER_TP_SIZE='2'
+  - export MODEL_NAMES='moonshotai/Kimi-Linear-48B-A3B-Instruct'
+  - export PREFILL_BLOCK_SIZE='2048'
+  - export DECODE_BLOCK_SIZE='2048'
+  - export VLLM_SERVE_EXTRA_ARGS='--trust-remote-code,--max-model-len 32768'
+  - bash v1/kv_connector/nixl_integration/run_accuracy_test.sh
+
+- label: ":amd: (MI355 DPX) Distributed Features" # TBD
+  timeout_in_minutes: 90
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/"
+  source_file_dependencies:
+  - csrc/rocm/quickreduce/
+  - vllm/distributed/
+  - vllm/model_executor/layers/
+  - vllm/entrypoints/llm.py
+  - vllm/config/parallel.py
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/v1/engine/
+  - vllm/v1/executor/
+  - vllm/v1/worker/
+  - vllm/v1/attention/backends/
+  - vllm/v1/attention/selector.py
+  - vllm/_aiter_ops.py
+  - vllm/_custom_ops.py
+  - vllm/platforms/rocm.py
+  - vllm/envs.py
+  - tests/distributed/test_context_parallel.py
+  - tests/distributed/test_rocm_aiter_custom_ar.py
+  - tests/distributed/test_rocm_quick_reduce.py
+  - tests/distributed/test_quick_all_reduce.py
+  - tests/v1/e2e/general/test_rocm_aiter_custom_ar.py
+  - tests/v1/distributed/test_dbo.py
+  - tests/utils.py
+  - examples/features/data_parallel/data_parallel_offline.py
+  - examples/rl/rlhf_async_new_apis.py
+  - tests/distributed/test_weight_transfer.py
+  - tests/distributed/test_packed_tensor.py
+  - tests/v1/attention/test_rocm_mla_dcp_context.py
+  - vllm/v1/attention/ops/rocm_aiter_mla_prefill.py
+  - vllm/v1/attention/ops/dcp.py
+  - tests/distributed/test_dcp_a2a.py
+  commands:
+  - pytest -v -s tests/distributed/test_context_parallel.py
+  - pytest -v -s tests/v1/attention/test_rocm_mla_dcp_context.py
+  - pytest -v -s tests/distributed/test_dcp_a2a.py -k v_up_proj
+  - VLLM_ALLOW_INSECURE_SERIALIZATION=1 python3 examples/rl/rlhf_async_new_apis.py
+  - VLLM_LOGGING_LEVEL=DEBUG python3 examples/features/data_parallel/data_parallel_offline.py --model=Qwen/Qwen1.5-MoE-A2.7B -tp=1 -dp=2 --max-model-len=2048 --all2all-backend=deepep_high_throughput
+  - VLLM_LOGGING_LEVEL=DEBUG python3 examples/features/data_parallel/data_parallel_offline.py --model=Qwen/Qwen1.5-MoE-A2.7B -tp=1 -dp=2 --max-model-len=2048 --all2all-backend=allgather_reducescatter --disable-nccl-for-dp-synchronization
+  - pytest -v -s tests/v1/distributed/test_dbo.py
+  - VLLM_ALLOW_INSECURE_SERIALIZATION=1 pytest -v -s tests/distributed/test_weight_transfer.py
+  - pytest -v -s tests/distributed/test_packed_tensor.py
+  - pytest -v -s tests/distributed/test_rocm_aiter_custom_ar.py
+  - pytest -v -s tests/v1/e2e/general/test_rocm_aiter_custom_ar.py
+  - pytest -v -s tests/distributed/test_rocm_quick_reduce.py
+  - pytest -v -s tests/distributed/test_quick_all_reduce.py
+
+- label: ":amd: (MI355 DPX) Distributed AgRs All2All"
+  timeout_in_minutes: 30
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/"
+  source_file_dependencies:
+  - .buildkite/test_areas/distributed.yaml
+  - vllm/distributed/
+  - vllm/config/parallel.py
+  - vllm/config/vllm.py
+  - vllm/forward_context.py
+  - vllm/platforms/rocm.py
+  - tests/distributed/test_mnnvl_alltoall.py
+  - tests/utils.py
+  commands:
+  - pytest -v -s tests/distributed/test_mnnvl_alltoall.py::test_args_dispatch_combine
+
+- label: ":amd: (MI355 DPX) Fusion E2E TP2 Quick" # TBD
+  timeout_in_minutes: 60
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/"
+  source_file_dependencies:
+  - csrc/quantization/
+  - vllm/compilation/
+  - vllm/distributed/
+  - vllm/model_executor/
+  - vllm/v1/attention/
+  - tests/compile/fusions_e2e/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  commands:
+  - export VLLM_TEST_CLEAN_GPU_MEMORY=1
+  - >-
+    VLLM_ROCM_USE_AITER=1
+    VLLM_ROCM_USE_AITER_CUSTOM_AR=1
+    pytest -v -s tests/compile/fusions_e2e/test_tp2_ar_rms.py
+    -k 'test_tp2_ar_rms_fp8_fusions and inductor_partition and
+    not +quant_fp8 and not +rms_norm and Llama-3 and
+    ROCM_AITER_UNIFIED_ATTN'
+  - >-
+    VLLM_ROCM_USE_AITER=1
+    VLLM_ROCM_USE_AITER_CUSTOM_AR=1
+    pytest -v -s tests/compile/fusions_e2e/test_tp2_ar_rms.py
+    -k 'test_tp2_ar_rms_fp8_fusions and inductor_partition and
+    +quant_fp8 and +rms_norm and qwen3 and
+    ROCM_AITER_UNIFIED_ATTN'
+  - >-
+    VLLM_ROCM_USE_AITER=1
+    VLLM_ROCM_USE_AITER_CUSTOM_AR=1
+    pytest -v -s tests/compile/fusions_e2e/test_tp2_ar_rms.py
+    -k 'test_tp2_ar_rms_fp8_fusions and inductor_partition and
+    not +quant_fp8 and DeepSeek-Coder and ROCM_AITER_MLA'
+
+- label: ":amd: (MI355 DPX) Distributed Torchrun + Examples" # TBD
+  timeout_in_minutes: 55
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/distributed/
+  - tests/distributed/test_torchrun_example.py
+  - tests/distributed/test_torchrun_example_moe.py
+  - examples/rl/
+  - examples/features/data_parallel/data_parallel_offline.py
+  - vllm/platforms/rocm.py
+  commands:
+  - torchrun --nproc-per-node=4 distributed/test_torchrun_example.py
+  # tp=2 and pp=2 with torchrun: no longer supported with MRV2
+  - TP_SIZE=4 torchrun --nproc-per-node=4 distributed/test_torchrun_example_moe.py
+  # tp=2, pp=2 and dp=1 with torchrun: no longer supported with MRV2
+  - DP_SIZE=4 ENABLE_EP=1 torchrun --nproc-per-node=4 distributed/test_torchrun_example_moe.py
+  - TP_SIZE=2 DP_SIZE=2 ENABLE_EP=1 torchrun --nproc-per-node=4 distributed/test_torchrun_example_moe.py
+  # Loading weights from the shared HF cache can exceed the default 300s --timeout.
+  - python3 ../examples/features/data_parallel/data_parallel_offline.py --enforce-eager --timeout 900
+  # rlhf examples
+  - VLLM_ALLOW_INSECURE_SERIALIZATION=1 python3 ../examples/rl/rlhf_http_nccl.py
+  - VLLM_ALLOW_INSECURE_SERIALIZATION=1 python3 ../examples/rl/rlhf_http_ipc.py
+
+- label: ":amd: (MI355 DPX) Rust Frontend Distributed" # TBD
+  timeout_in_minutes: 45
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - rust/
+  - vllm/distributed/
+  - vllm/engine/
+  - vllm/v1/executor/
+  - vllm/v1/engine/
+  - vllm/v1/worker/
+  - tests/utils.py
+  - tests/v1/distributed/test_dense_dp_world_size.py
+  - tests/v1/distributed/test_external_lb_dp.py
+  - tests/v1/distributed/test_hybrid_lb_dp.py
+  - tests/v1/distributed/test_internal_lb_dp.py
+  - vllm/platforms/rocm.py
+  commands:
+  - export VLLM_USE_RUST_FRONTEND=1
+  - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+  - TP_SIZE=1 DP_SIZE=4 pytest -v -s v1/distributed/test_dense_dp_world_size.py
+  - VLLM_ENGINE_READY_TIMEOUT_S=1800 TP_SIZE=1 DP_SIZE=4 pytest -v -s v1/distributed/test_internal_lb_dp.py -k "not 4 and not server_info"
+  - TP_SIZE=1 DP_SIZE=2 pytest -v -s v1/distributed/test_external_lb_dp.py -k "not 4 and not server_info"
+  - TP_SIZE=1 DP_SIZE=4 pytest -v -s v1/distributed/test_hybrid_lb_dp.py -k "not 4 and not server_info"
+
+#----------------------------------------------------------  mi355 · engine  -----------------------------------------------------------#
+
+- label: ":amd: (MI355 DPX) GPQA Eval (GPT-OSS)" # TBD
+  timeout_in_minutes: 40
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - csrc/
+  - vllm/model_executor/layers/quantization
+  - vllm/model_executor/models/
+  - vllm/model_executor/model_loader/
+  - vllm/v1/attention/backends/
+  - vllm/v1/attention/selector.py
+  - vllm/model_executor/layers/fused_moe/
+  - tests/evals/gpt_oss/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  commands:
+    - pytest -s -v evals/gpt_oss/test_gpqa_correctness.py --config-list-file=configs/models-gfx950.txt
+
+- label: ":amd: (MI355 DPX) LM Eval Watermark Feature Combination"
+  timeout_in_minutes: 60
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - .buildkite/test_areas/lm_eval.yaml
+  - tests/evals/gsm8k/
+  - vllm/config/speculative.py
+  - vllm/config/vllm.py
+  - vllm/config/watermarking.py
+  - vllm/sampling_params.py
+  - vllm/model_executor/models/qwen3_dspark.py
+  - vllm/model_executor/models/qwen3_dflash.py
+  - vllm/model_executor/warmup/
+  - vllm/v1/watermarking/
+  - vllm/v1/worker/gpu/
+  - vllm/platforms/rocm.py
+  commands:
+  - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+  - pytest -s -v evals/gsm8k/test_gsm8k_correctness.py --config-list-file=configs/models-watermark-dspark-tp2.txt
+
+- label: ":amd: (MI355 DPX) LM Eval Qwen3.5 Models" # TBD
+  timeout_in_minutes: 75
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/models/qwen3_5/
+  - vllm/model_executor/models/qwen3_5.py
+  - vllm/model_executor/models/qwen3_5_mtp.py
+  - vllm/model_executor/models/qwen3.py
+  - vllm/model_executor/models/qwen3_next.py
+  - vllm/model_executor/models/qwen3_next_mtp.py
+  - vllm/distributed/
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/third_party/flash_linear_attention/ops/
+  - vllm/model_executor/layers/quantization/modelopt.py
+  - vllm/model_executor/kernels/linear/nvfp4/
+  - vllm/v1/attention/
+  - vllm/v1/worker/
+  - tests/evals/gsm8k/
+  - tests/utils.py
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  commands:
+  - pytest -s -v evals/gsm8k/test_gsm8k_correctness.py --config-list-file=configs/models-qwen35-mi355.txt
+
+- label: ":amd: (MI355 DPX) LM Eval Large Models EP"
+  timeout_in_minutes: 120
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - .buildkite/test_areas/lm_eval.yaml
+  - tests/evals/gsm8k/
+  - tests/utils.py
+  - tests/conftest.py
+  - csrc/
+  - vllm/config/
+  - vllm/distributed/
+  - vllm/model_executor/models/config.py
+  - vllm/model_executor/models/registry.py
+  - vllm/model_executor/models/utils.py
+  - vllm/model_executor/models/qwen3_next.py
+  - vllm/model_executor/models/qwen3_next_mtp.py
+  - vllm/model_executor/models/nemotron_h.py
+  - vllm/model_executor/models/nemotron_h_mtp.py
+  - vllm/model_executor/model_loader/
+  - vllm/model_executor/layers/quantization/
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/model_executor/layers/mamba/
+  - vllm/model_executor/layers/layernorm.py
+  - vllm/model_executor/layers/linear.py
+  - vllm/model_executor/kernels/linear/
+  - vllm/third_party/flash_linear_attention/ops/
+  - vllm/v1/attention/
+  - vllm/v1/spec_decode/
+  - vllm/v1/worker/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  commands:
+  - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+  - pytest -s -v evals/gsm8k/test_gsm8k_correctness.py --config-list-file=configs/models-blackwell-ep-mi355.txt
+
+# Disabled until evalscope transitive dependencies are locked.
+# - label: ":amd: (MI355 DPX) Qwen3.8-Flash-Next-FP8 Accuracy Eval"
+#   timeout_in_minutes: 105
+#   mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+#   dind: false
+#   agent_pool: mi355_dpx_4
+#   num_gpus: 4
+#   optional: true
+#   working_dir: "/vllm-workspace/tests"
+#   source_file_dependencies:
+#   - csrc/gdn/
+#   - tests/evals/qwen4_exp/
+#   - vllm/model_executor/layers/mamba/
+#   - vllm/models/qwen4_exp/
+#   - vllm/v1/attention/backends/short_conv_attn.py
+#   - vllm/platforms/rocm.py
+#   commands:
+#   - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+#   - uv pip install --system 'evalscope==1.10.0'
+#   - pytest -s -v evals/qwen4_exp/test_accuracy.py --config-list-file=configs/models-rocm.txt
+
+- label: ":amd: (MI355 DPX) LM Eval Spec Decode (Fixed-length FP8)" # TBD
+  timeout_in_minutes: 145
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - tests/evals/gsm8k/
+  - tests/utils.py
+  - vllm/distributed/
+  - vllm/models/deepseek_v4/
+  - vllm/model_executor/models/qwen3_dspark.py
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/v1/spec_decode/metrics.py
+  - vllm/v1/worker/gpu/spec_decode/dspark/
+  - vllm/v1/worker/gpu/spec_decode/rejection_sampler.py
+  - vllm/v1/worker/gpu/spec_decode/speculator.py
+  - vllm/model_executor/layers/quantization/
+  - vllm/v1/attention/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  commands:
+  - pytest -s -v evals/gsm8k/test_gsm8k_correctness.py --config-list-file=configs/models-spec-decode-rocm.txt
+
+- label: ':amd: (MI355) LM Eval Small Models Distributed'
+  timeout_in_minutes: 145
+  mirror_hardwares:
+  - amdexperimental
+  - amdproduction
+  - amdgfx950nightly
+  - amdmi355
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: /vllm-workspace/tests
+  source_file_dependencies:
+  - csrc/
+  - vllm/model_executor/layers/quantization
+  - vllm/model_executor/models/
+  - vllm/model_executor/model_loader/
+  - vllm/v1/attention/backends/
+  - vllm/v1/attention/selector.py
+  - vllm/v1/worker/
+  - vllm/v1/core/
+  - vllm/config/
+  - tests/evals/gsm8k/configs/models-mi3xx-fp8-and-mixed.txt
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  - tests/evals/gsm8k/
+  - tests/utils.py
+  - vllm/distributed/
+  - vllm/v1/attention/ops/
+  commands:
+  - pytest -s -v evals/gsm8k/test_gsm8k_correctness.py --config-list-file=configs/models-mi3xx-fp8-and-mixed.txt
+  - pytest -s -v evals/gsm8k/test_gsm8k_correctness.py --config-list-file=configs/models-small-tp.yaml
+
+- label: ":amd: (MI355 DPX) MoE Refactor Integration Shard %N"
+  timeout_in_minutes: 105
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  parallelism: 4
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/platforms/rocm.py
+  - tests/evals/gsm8k/
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/model_executor/layers/quantization/
+  - vllm/_aiter_ops.py
+  commands:
+  - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+  - pytest -s -v evals/gsm8k/test_gsm8k_correctness.py --config-list-file=evals/gsm8k/configs/moe-refactor/config-rocm-shard-$$BUILDKITE_PARALLEL_JOB.txt
+
+- label: ":amd: (MI355 DPX) Qwen3-30B-A3B-FP8-block Sync EPLB Accuracy TP2" # TBD
+  timeout_in_minutes: 30
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace"
+  source_file_dependencies:
+  - vllm/model_executor/models/
+  - vllm/model_executor/model_loader/
+  - vllm/model_executor/layers/quantization/
+  - vllm/distributed/eplb
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/v1/attention/backends/
+  - vllm/v1/attention/selector.py
+  - .buildkite/scripts/scheduled_integration_test/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  commands:
+  - bash .buildkite/scripts/scheduled_integration_test/qwen30b_a3b_fp8_block_ep_eplb.sh 0.8 200 8020
+
+
+- label: ":amd: (MI355 DPX) Qwen3-30B-A3B-FP8-block Sync EPLB Accuracy" # TBD
+  timeout_in_minutes: 25
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace"
+  source_file_dependencies:
+  - vllm/model_executor/models/
+  - vllm/model_executor/model_loader/
+  - vllm/model_executor/layers/quantization/
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/distributed/eplb
+  - vllm/v1/attention/backends/
+  - vllm/v1/attention/selector.py
+  - .buildkite/scripts/scheduled_integration_test/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  commands:
+  - bash .buildkite/scripts/scheduled_integration_test/qwen30b_a3b_fp8_block_ep_eplb.sh 0.8 200 8020 2 1
+
+- label: ":amd: (MI355 DPX) Qwen3-30B-A3B-FP8 DP4 Async EPLB Accuracy" # TBD
+  timeout_in_minutes: 30
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace"
+  source_file_dependencies:
+  - vllm/model_executor/models/
+  - vllm/model_executor/model_loader/
+  - vllm/model_executor/layers/quantization/
+  - vllm/distributed/eplb
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/v1/attention/backends/
+  - vllm/v1/attention/selector.py
+  - .buildkite/scripts/scheduled_integration_test/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  commands:
+  - bash .buildkite/scripts/scheduled_integration_test/qwen30b_a3b_fp8_dp4_async_eplb.sh 0.8 200 8050
+
+- label: ":amd: (MI355 DPX) LM Eval Large Models FP8" # TBD
+  timeout_in_minutes: 45
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace/.buildkite/lm-eval-harness"
+  source_file_dependencies:
+  - csrc/
+  - vllm/model_executor/layers/quantization
+  - vllm/model_executor/models/
+  - vllm/model_executor/model_loader/
+  - vllm/v1/attention/backends/
+  - vllm/v1/attention/selector.py
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  commands:
+  - export VLLM_USE_DEEP_GEMM=0
+  - pytest -s -v test_lm_eval_correctness.py --config-list-file=configs/models-large-rocm-tp4.txt --tp-size=4
+
+- label: ":amd: (MI355 DPX) LM Eval DeepSeek R1 TP"
+  timeout_in_minutes: 65
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  optional: true
+  num_gpus: 4
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - .buildkite/test_areas/lm_eval.yaml
+  - tests/evals/gsm8k/
+  - tests/utils.py
+  - tests/conftest.py
+  - vllm/config/
+  - vllm/distributed/
+  - vllm/model_executor/models/
+  - vllm/models/
+  - vllm/model_executor/model_loader/
+  - vllm/model_executor/layers/quantization/
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/v1/attention/
+  - vllm/v1/spec_decode/
+  - vllm/v1/worker/gpu/spec_decode/
+  - vllm/v1/core/kv_cache_utils.py
+  - vllm/v1/core/kv_cache_planning.py
+  - vllm/model_executor/layers/layernorm.py
+  - csrc/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  - vllm/model_executor/layers/sparse_attn_indexer.py
+  commands:
+  - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+  - pytest -s -v evals/gsm8k/test_gsm8k_correctness.py --config-list-file=configs/models-mi355-deepseek-r1-tp.txt
+
+- label: ":amd: (MI355 DPX) LM Eval DeepSeek R1 DP"
+  timeout_in_minutes: 65
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  optional: true
+  num_gpus: 4
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - .buildkite/test_areas/lm_eval.yaml
+  - tests/evals/gsm8k/
+  - tests/utils.py
+  - tests/conftest.py
+  - vllm/config/
+  - vllm/distributed/
+  - vllm/model_executor/models/
+  - vllm/models/
+  - vllm/model_executor/model_loader/
+  - vllm/model_executor/layers/quantization/
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/v1/attention/
+  - vllm/v1/spec_decode/
+  - vllm/v1/worker/gpu/spec_decode/
+  - vllm/v1/core/kv_cache_utils.py
+  - vllm/v1/core/kv_cache_planning.py
+  - vllm/model_executor/layers/layernorm.py
+  - csrc/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  - vllm/model_executor/layers/sparse_attn_indexer.py
+  commands:
+  - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+  - pytest -s -v evals/gsm8k/test_gsm8k_correctness.py --config-list-file=configs/models-mi355-deepseek-r1-dp.txt
+
+- label: ":amd: (MI355 DPX) LM Eval DeepSeek V3-2 TP"
+  timeout_in_minutes: 65
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  optional: true
+  num_gpus: 4
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - .buildkite/test_areas/lm_eval.yaml
+  - tests/evals/gsm8k/
+  - tests/utils.py
+  - tests/conftest.py
+  - vllm/config/
+  - vllm/distributed/
+  - vllm/model_executor/models/
+  - vllm/models/
+  - vllm/model_executor/model_loader/
+  - vllm/model_executor/layers/quantization/
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/v1/attention/
+  - vllm/v1/spec_decode/
+  - vllm/v1/worker/gpu/spec_decode/
+  - vllm/v1/core/kv_cache_utils.py
+  - vllm/v1/core/kv_cache_planning.py
+  - vllm/model_executor/layers/layernorm.py
+  - csrc/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  - vllm/model_executor/layers/sparse_attn_indexer.py
+  commands:
+  - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+  - pytest -s -v evals/gsm8k/test_gsm8k_correctness.py --config-list-file=configs/models-mi355-deepseek-v32-tp.txt
+
+- label: ":amd: (MI355 DPX) LM Eval DeepSeek V3-2 DP"
+  timeout_in_minutes: 65
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  optional: true
+  num_gpus: 4
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - .buildkite/test_areas/lm_eval.yaml
+  - tests/evals/gsm8k/
+  - tests/utils.py
+  - tests/conftest.py
+  - vllm/config/
+  - vllm/distributed/
+  - vllm/model_executor/models/
+  - vllm/models/
+  - vllm/model_executor/model_loader/
+  - vllm/model_executor/layers/quantization/
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/v1/attention/
+  - vllm/v1/spec_decode/
+  - vllm/v1/worker/gpu/spec_decode/
+  - vllm/v1/core/kv_cache_utils.py
+  - vllm/v1/core/kv_cache_planning.py
+  - vllm/model_executor/layers/layernorm.py
+  - csrc/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  - vllm/model_executor/layers/sparse_attn_indexer.py
+  commands:
+  - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+  - pytest -s -v evals/gsm8k/test_gsm8k_correctness.py --config-list-file=configs/models-mi355-deepseek-v32-dp.txt
+
+- label: ":amd: (MI355 DPX) LM Eval Nemotron 3 Super"
+  timeout_in_minutes: 65
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  optional: true
+  num_gpus: 4
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - .buildkite/test_areas/lm_eval.yaml
+  - tests/evals/gsm8k/
+  - tests/utils.py
+  - tests/conftest.py
+  - vllm/config/
+  - vllm/distributed/
+  - vllm/model_executor/models/
+  - vllm/models/
+  - vllm/model_executor/model_loader/
+  - vllm/model_executor/layers/quantization/
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/v1/attention/
+  - vllm/v1/spec_decode/
+  - vllm/v1/worker/gpu/spec_decode/
+  - vllm/v1/core/kv_cache_utils.py
+  - vllm/v1/core/kv_cache_planning.py
+  - vllm/model_executor/layers/layernorm.py
+  - csrc/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  - vllm/model_executor/layers/mamba/
+  commands:
+  - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+  - pytest -s -v evals/gsm8k/test_gsm8k_correctness.py --config-list-file=configs/models-mi355-nemotron-3-super.txt
+
+- label: ":amd: (MI355 DPX) LM Eval KV-Offload Large" # TBD
+  timeout_in_minutes: 65
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/distributed/kv_transfer/kv_connector/v1/offloading/
+  - vllm/distributed/kv_transfer/kv_connector/v1/simple_cpu_offload_connector.py
+  - vllm/v1/kv_offload/
+  - vllm/v1/simple_kv_offload/
+  - tests/evals/gsm8k/test_gsm8k_offloading.py
+  - vllm/platforms/rocm.py
+  commands:
+  - VLLM_ROCM_USE_AITER=1 pytest -s -v evals/gsm8k/test_gsm8k_offloading.py -k "deepseek-v4-flash"
+
+- label: ":amd: (MI355 DPX) LM Eval Large Models Harness" # TBD
+  timeout_in_minutes: 85
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace/.buildkite/lm-eval-harness"
+  source_file_dependencies:
+  - csrc/
+  - vllm/model_executor/layers/quantization
+  - vllm/model_executor/models/
+  - vllm/model_executor/model_loader/
+  - vllm/v1/attention/backends/
+  - vllm/v1/attention/selector.py
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  commands:
+  - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+  - pytest -s -v test_lm_eval_correctness.py --config-list-file=configs/models-large.txt --tp-size=4
+
+- label: ":amd: (MI355 DPX) DeepSeek V2-Lite Sync EPLB Accuracy" # TBD
+  timeout_in_minutes: 40
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace"
+  source_file_dependencies:
+  - vllm/model_executor/models/
+  - vllm/model_executor/model_loader/
+  - vllm/distributed/eplb
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/model_executor/layers/quantization/
+  - vllm/v1/attention/backends/
+  - vllm/v1/attention/backends/mla/
+  - vllm/v1/attention/selector.py
+  - .buildkite/scripts/scheduled_integration_test/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  commands:
+  - VLLM_ENGINE_READY_TIMEOUT_S=1800 bash .buildkite/scripts/scheduled_integration_test/deepseek_v2_lite_ep_eplb.sh 0.25 200 8010
+
+- label: ":amd: (MI355 DPX) Qwen3-Next-80B-A3B-Instruct MTP Async EPLB Accuracy" # TBD
+  timeout_in_minutes: 45
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace"
+  source_file_dependencies:
+  - vllm/model_executor/models/
+  - vllm/model_executor/model_loader/
+  - vllm/v1/spec_decode/
+  - vllm/distributed/eplb
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/model_executor/layers/quantization/
+  - vllm/v1/attention/backends/
+  - vllm/v1/attention/selector.py
+  - .buildkite/scripts/scheduled_integration_test/
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  commands:
+  - VLLM_ENGINE_READY_TIMEOUT_S=1800 bash .buildkite/scripts/scheduled_integration_test/qwen3_next_mtp_async_eplb.sh 0.8 1319 8040
+
+- label: ":amd: (MI355 DPX) LM Eval KV-Offload Medium" # TBD
+  timeout_in_minutes: 70
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/distributed/kv_transfer/kv_connector/v1/offloading/
+  - vllm/distributed/kv_transfer/kv_connector/v1/simple_cpu_offload_connector.py
+  - vllm/v1/kv_offload/
+  - vllm/v1/simple_kv_offload/
+  - tests/evals/gsm8k/test_gsm8k_offloading.py
+  - vllm/platforms/rocm.py
+  commands:
+  - pytest -s -v evals/gsm8k/test_gsm8k_offloading.py -k "qwen3.5-35b or deepseek-v2-lite"
+
+#---------------------------------------------------------  mi355 · examples  ----------------------------------------------------------#
+
+- label: ":amd: (MI355 DPX) MiniMax Reduce RMS Kernels" # TBD
+  timeout_in_minutes: 45
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/model_executor/layers/minimax_rms_norm/
+  - vllm/model_executor/layers/fused_allreduce_gemma_rms_norm.py
+  - vllm/distributed/
+  - vllm/_aiter_ops.py
+  - vllm/envs.py
+  - vllm/platforms/rocm.py
+  - tests/kernels/core/test_minimax_reduce_rms.py
+  - tests/kernels/core/test_fused_allreduce_gemma_rms_norm.py
+  - tests/utils.py
+  - csrc/minimax_reduce_rms_kernel.cu
+  - csrc/minimax_reduce_rms_kernel.h
+  - csrc/ops.h
+  - csrc/torch_bindings.cpp
+  - vllm/model_executor/layers/mamba/linear/minimax_linear_attn.py
+  optional: true
+  commands:
+  - pytest -v -s kernels/core/test_minimax_reduce_rms.py kernels/core/test_fused_allreduce_gemma_rms_norm.py
+
+- label: ":amd: (MI355 DPX) FusedMoE Layer Kernels" # TBD
+  timeout_in_minutes: 35
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - csrc/moe/
+  - csrc/rocm/
+  - tests/kernels/moe
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/model_executor/layers/quantization/
+  - vllm/distributed/
+  - vllm/config/
+  - vllm/forward_context.py
+  - vllm/v1/worker/workspace.py
+  - vllm/utils/import_utils.py
+  - vllm/utils/math_utils.py
+  - vllm/utils/torch_utils.py
+  - vllm/platforms/
+  - vllm/_aiter_ops.py
+  - csrc/quantization/w8a8/cutlass/moe/
+  - vllm/distributed/device_communicators/
+  - vllm/config
+  commands:
+  # MoRI graph cases run in the Fault Tolerance group's healthy EP baseline.
+  - pytest -v -s kernels/moe/test_moe_layer.py -k "not test_moe_layer_mori_graph"
+
+- label: ":amd: (MI355 DPX) MoRI EP Numerics"
+  timeout_in_minutes: 20
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - tests/kernels/moe/test_mori_moe.py
+  - tests/kernels/moe/utils.py
+  - tests/kernels/moe/modular_kernel_tools/parallel_utils.py
+  - tests/kernels/utils.py
+  - tests/utils.py
+  - tests/conftest.py
+  - vllm/utils/torch_utils.py
+  - vllm/model_executor/layers/fused_moe/
+  - vllm/model_executor/layers/quantization/
+  - vllm/distributed/
+  - vllm/config/
+  - vllm/forward_context.py
+  - vllm/v1/worker/workspace.py
+  - vllm/platforms/
+  - vllm/_aiter_ops.py
+  - requirements/test/rocm.txt
+  optional: true
+  commands:
+  - amd-smi
+  - VLLM_ROCM_USE_AITER=1 VLLM_ROCM_USE_AITER_MOE=1 VLLM_ROCM_USE_AITER_FUSION_SHARED_EXPERTS=0 pytest -v -s kernels/moe/test_mori_moe.py
+
+- label: ":amd: (MI355 DPX) DeepSeek-V4.1 Mono Decode Numerics"
+  timeout_in_minutes: 40
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace/"
+  source_file_dependencies:
+  - docker/Dockerfile.rocm_base
+  - vllm/models/deepseek_v41/amd/
+  - tests/models/test_dsv41_mono_numerics.py
+  - tests/models/test_dsv41_mono_layers.py
+  commands:
+  - pytest -v -s tests/models/test_dsv41_mono_numerics.py
+  - pytest -v -s tests/models/test_dsv41_mono_layers.py
+
+- label: ":amd: (MI355 DPX) DeepEP FP8 MoE Kernels" # TBD
+  timeout_in_minutes: 55
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - csrc/moe/
+  - csrc/quantization/w8a8/cutlass/moe/
+  - vllm/model_executor/layers/fused_moe/
+  - tests/kernels/moe/test_deepep_moe.py
+  - vllm/_aiter_ops.py
+  - vllm/platforms/rocm.py
+  - vllm/envs.py
+  commands:
+    - pytest -v -s kernels/moe/test_deepep_moe.py
+
+#-----------------------------------------------------------  mi355 · lora  ------------------------------------------------------------#
+
+- label: ":amd: (MI355 DPX) MoRIIO WRITE P/D Dummy-Weight E2E Shard %N"
+  timeout_in_minutes: 45
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  parallelism: 6
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/distributed/kv_transfer/kv_connector/v1/moriio/
+  - vllm/distributed/kv_transfer/kv_connector/v1/base.py
+  - vllm/distributed/kv_transfer/kv_connector/v1/ssm_conv_transfer_utils.py
+  - vllm/model_executor/model_loader/dummy_loader.py
+  - examples/disaggregated/disaggregated_serving/moriio_toy_proxy_server.py
+  - tests/v1/kv_connector/moriio_integration/
+  - requirements/test/rocm.txt
+  commands:
+  - bash /vllm-workspace/.buildkite/scripts/check-kv-connectors.sh
+  - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+  - pytest -v -s -rs v1/kv_connector/moriio_integration/test_write_dummy_e2e_rocm.py -k "not heterogeneous_tp" --shard-id=$$BUILDKITE_PARALLEL_JOB --num-shards=$$BUILDKITE_PARALLEL_JOB_COUNT
+
+# The same P/D between different TP sizes (WRITE TP2 -> TP1, READ of MLA
+# TP1 <-> TP2), which needs 3 GPUs: 8 cases, ~36 min on MI355.
+- label: ":amd: (MI355 DPX) MoRIIO WRITE P/D Dummy-Weight Heterogeneous TP"
+  timeout_in_minutes: 45
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_4
+  num_gpus: 4
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/distributed/kv_transfer/kv_connector/v1/moriio/
+  - vllm/distributed/kv_transfer/kv_connector/v1/base.py
+  - vllm/distributed/kv_transfer/kv_connector/v1/ssm_conv_transfer_utils.py
+  - vllm/model_executor/model_loader/dummy_loader.py
+  - examples/disaggregated/disaggregated_serving/moriio_toy_proxy_server.py
+  - tests/v1/kv_connector/moriio_integration/
+  - requirements/test/rocm.txt
+  commands:
+  - bash /vllm-workspace/.buildkite/scripts/check-kv-connectors.sh
+  - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+  - pytest -v -s -rs v1/kv_connector/moriio_integration/test_write_dummy_e2e_rocm.py -k heterogeneous_tp
+
+- label: ":amd: (MI355 DPX) UMBP Connector TP2 Integration"
+  timeout_in_minutes: 20
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/distributed/kv_transfer/kv_connector/v1/umbp/
+  - vllm/distributed/kv_transfer/kv_connector/v1/base.py
+  - tests/v1/kv_connector/umbp_integration/
+  - tests/v1/kv_connector/umbp_test_utils.py
+  - tests/v1/kv_connector/conftest.py
+  - tests/v1/kv_connector/rocm_pd_accuracy_utils.py
+  - docker/Dockerfile.rocm_base
+  commands:
+  - export VLLM_WORKER_MULTIPROC_METHOD=spawn
+  - >-
+    pytest -v -s -rs
+    "v1/kv_connector/umbp_integration/test_mori_token_e2e.py::test_restore_matches_recompute[tp2]"
+    "v1/kv_connector/umbp_integration/test_mori_standalone_gpu.py::test_objects_outlive_the_writer_and_restore_on_another_gpu"
+
+- label: ":amd: (MI355 DPX) Spec Decode DeepSeek MTP Parallel Load"
+  timeout_in_minutes: 45
+  mirror_hardwares: [amdexperimental, amdproduction, amdgfx950nightly, amdmi355]
+  dind: false
+  agent_pool: mi355_dpx_2
+  num_gpus: 2
+  optional: true
+  working_dir: "/vllm-workspace/tests"
+  source_file_dependencies:
+  - vllm/v1/worker/gpu/spec_decode/eagle/
+  - vllm/model_executor/models/deepseek_mtp.py
+  - vllm/model_executor/models/deepseek_v2.py
+  - tests/v1/e2e/spec_decode/test_mtp_parallel_load.py
+  - vllm/distributed/
+  - vllm/model_executor/model_loader/
+  - vllm/model_executor/layers/
+  - vllm/v1/attention/
+  - vllm/v1/engine/
+  - vllm/v1/spec_decode/
+  - vllm/v1/worker/gpu/spec_decode/
+  - vllm/platforms/rocm.py
+  commands:
+  - pytest -v -s v1/e2e/spec_decode/test_mtp_parallel_load.py
+
