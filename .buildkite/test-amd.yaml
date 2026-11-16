@@ -6327,3 +6327,328 @@ steps:
   commands:
   - pytest -v -s tests/jit_monitor/test_no_runtime_jit_rocm.py --timeout=300
   - pytest -v -s tests/jit_monitor/test_flydsl_contract.py
+
+# --- MI355 DPX queue consolidation load test ---
+# 20x1-GPU + 10x2-GPU + 10x4-GPU = 40 jobs.
+# All land on queue=amd_mi355_dpx with matching gpu_size tag.
+# None are optional. No source_file_dependencies.
+- label: ":amd: (MI355 DPX) load-test 1gpu-1"
+  key: mi355-dpx-amd-ci-load-1gpu-1
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-2"
+  key: mi355-dpx-amd-ci-load-1gpu-2
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-3"
+  key: mi355-dpx-amd-ci-load-1gpu-3
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-4"
+  key: mi355-dpx-amd-ci-load-1gpu-4
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-5"
+  key: mi355-dpx-amd-ci-load-1gpu-5
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-6"
+  key: mi355-dpx-amd-ci-load-1gpu-6
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-7"
+  key: mi355-dpx-amd-ci-load-1gpu-7
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-8"
+  key: mi355-dpx-amd-ci-load-1gpu-8
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-9"
+  key: mi355-dpx-amd-ci-load-1gpu-9
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-10"
+  key: mi355-dpx-amd-ci-load-1gpu-10
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-11"
+  key: mi355-dpx-amd-ci-load-1gpu-11
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-12"
+  key: mi355-dpx-amd-ci-load-1gpu-12
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-13"
+  key: mi355-dpx-amd-ci-load-1gpu-13
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-14"
+  key: mi355-dpx-amd-ci-load-1gpu-14
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-15"
+  key: mi355-dpx-amd-ci-load-1gpu-15
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-16"
+  key: mi355-dpx-amd-ci-load-1gpu-16
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-17"
+  key: mi355-dpx-amd-ci-load-1gpu-17
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-18"
+  key: mi355-dpx-amd-ci-load-1gpu-18
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-19"
+  key: mi355-dpx-amd-ci-load-1gpu-19
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 1gpu-20"
+  key: mi355-dpx-amd-ci-load-1gpu-20
+  mirror_hardwares: [amdmi355dpx]
+  dind: false
+  agent_pool: mi355_dpx
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 2gpu-1"
+  key: mi355-dpx-amd-ci-load-2gpu-1
+  mirror_hardwares: [amdmi355dpx2]
+  dind: false
+  agent_pool: mi355_dpx_2
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 2gpu-2"
+  key: mi355-dpx-amd-ci-load-2gpu-2
+  mirror_hardwares: [amdmi355dpx2]
+  dind: false
+  agent_pool: mi355_dpx_2
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 2gpu-3"
+  key: mi355-dpx-amd-ci-load-2gpu-3
+  mirror_hardwares: [amdmi355dpx2]
+  dind: false
+  agent_pool: mi355_dpx_2
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 2gpu-4"
+  key: mi355-dpx-amd-ci-load-2gpu-4
+  mirror_hardwares: [amdmi355dpx2]
+  dind: false
+  agent_pool: mi355_dpx_2
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 2gpu-5"
+  key: mi355-dpx-amd-ci-load-2gpu-5
+  mirror_hardwares: [amdmi355dpx2]
+  dind: false
+  agent_pool: mi355_dpx_2
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 2gpu-6"
+  key: mi355-dpx-amd-ci-load-2gpu-6
+  mirror_hardwares: [amdmi355dpx2]
+  dind: false
+  agent_pool: mi355_dpx_2
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 2gpu-7"
+  key: mi355-dpx-amd-ci-load-2gpu-7
+  mirror_hardwares: [amdmi355dpx2]
+  dind: false
+  agent_pool: mi355_dpx_2
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 2gpu-8"
+  key: mi355-dpx-amd-ci-load-2gpu-8
+  mirror_hardwares: [amdmi355dpx2]
+  dind: false
+  agent_pool: mi355_dpx_2
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 2gpu-9"
+  key: mi355-dpx-amd-ci-load-2gpu-9
+  mirror_hardwares: [amdmi355dpx2]
+  dind: false
+  agent_pool: mi355_dpx_2
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 2gpu-10"
+  key: mi355-dpx-amd-ci-load-2gpu-10
+  mirror_hardwares: [amdmi355dpx2]
+  dind: false
+  agent_pool: mi355_dpx_2
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 4gpu-1"
+  key: mi355-dpx-amd-ci-load-4gpu-1
+  mirror_hardwares: [amdmi355dpx4]
+  dind: false
+  agent_pool: mi355_dpx_4
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 4gpu-2"
+  key: mi355-dpx-amd-ci-load-4gpu-2
+  mirror_hardwares: [amdmi355dpx4]
+  dind: false
+  agent_pool: mi355_dpx_4
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 4gpu-3"
+  key: mi355-dpx-amd-ci-load-4gpu-3
+  mirror_hardwares: [amdmi355dpx4]
+  dind: false
+  agent_pool: mi355_dpx_4
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 4gpu-4"
+  key: mi355-dpx-amd-ci-load-4gpu-4
+  mirror_hardwares: [amdmi355dpx4]
+  dind: false
+  agent_pool: mi355_dpx_4
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 4gpu-5"
+  key: mi355-dpx-amd-ci-load-4gpu-5
+  mirror_hardwares: [amdmi355dpx4]
+  dind: false
+  agent_pool: mi355_dpx_4
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 4gpu-6"
+  key: mi355-dpx-amd-ci-load-4gpu-6
+  mirror_hardwares: [amdmi355dpx4]
+  dind: false
+  agent_pool: mi355_dpx_4
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 4gpu-7"
+  key: mi355-dpx-amd-ci-load-4gpu-7
+  mirror_hardwares: [amdmi355dpx4]
+  dind: false
+  agent_pool: mi355_dpx_4
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 4gpu-8"
+  key: mi355-dpx-amd-ci-load-4gpu-8
+  mirror_hardwares: [amdmi355dpx4]
+  dind: false
+  agent_pool: mi355_dpx_4
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 4gpu-9"
+  key: mi355-dpx-amd-ci-load-4gpu-9
+  mirror_hardwares: [amdmi355dpx4]
+  dind: false
+  agent_pool: mi355_dpx_4
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q
+- label: ":amd: (MI355 DPX) load-test 4gpu-10"
+  key: mi355-dpx-amd-ci-load-4gpu-10
+  mirror_hardwares: [amdmi355dpx4]
+  dind: false
+  agent_pool: mi355_dpx_4
+  depends_on: [image-build-amd]
+  commands:
+    - pytest tests/basic_correctness/test_basic_correctness.py -x -q

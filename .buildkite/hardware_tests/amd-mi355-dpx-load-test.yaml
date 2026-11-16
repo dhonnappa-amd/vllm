@@ -1,0 +1,247 @@
+# Load test for amd_mi355_dpx queue consolidation.
+# All jobs land on queue=amd_mi355_dpx with the matching gpu_size tag.
+# - 20 × 1-GPU DPX   (device: mi355_dpx)
+# - 10 × 2-GPU DPX   (device: mi355_dpx_2)
+# - 10 × 4-GPU DPX   (device: mi355_dpx_4)
+# None are optional. No source_file_dependencies (always run).
+steps:
+  - label: "MI355 DPX load-test 1gpu-1"
+    key: mi355-dpx-load-1gpu-1
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-2"
+    key: mi355-dpx-load-1gpu-2
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-3"
+    key: mi355-dpx-load-1gpu-3
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-4"
+    key: mi355-dpx-load-1gpu-4
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-5"
+    key: mi355-dpx-load-1gpu-5
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-6"
+    key: mi355-dpx-load-1gpu-6
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-7"
+    key: mi355-dpx-load-1gpu-7
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-8"
+    key: mi355-dpx-load-1gpu-8
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-9"
+    key: mi355-dpx-load-1gpu-9
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-10"
+    key: mi355-dpx-load-1gpu-10
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-11"
+    key: mi355-dpx-load-1gpu-11
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-12"
+    key: mi355-dpx-load-1gpu-12
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-13"
+    key: mi355-dpx-load-1gpu-13
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-14"
+    key: mi355-dpx-load-1gpu-14
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-15"
+    key: mi355-dpx-load-1gpu-15
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-16"
+    key: mi355-dpx-load-1gpu-16
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-17"
+    key: mi355-dpx-load-1gpu-17
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-18"
+    key: mi355-dpx-load-1gpu-18
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-19"
+    key: mi355-dpx-load-1gpu-19
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 1gpu-20"
+    key: mi355-dpx-load-1gpu-20
+    device: mi355_dpx
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 2gpu-1"
+    key: mi355-dpx-load-2gpu-1
+    device: mi355_dpx_2
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 2gpu-2"
+    key: mi355-dpx-load-2gpu-2
+    device: mi355_dpx_2
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 2gpu-3"
+    key: mi355-dpx-load-2gpu-3
+    device: mi355_dpx_2
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 2gpu-4"
+    key: mi355-dpx-load-2gpu-4
+    device: mi355_dpx_2
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 2gpu-5"
+    key: mi355-dpx-load-2gpu-5
+    device: mi355_dpx_2
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 2gpu-6"
+    key: mi355-dpx-load-2gpu-6
+    device: mi355_dpx_2
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 2gpu-7"
+    key: mi355-dpx-load-2gpu-7
+    device: mi355_dpx_2
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 2gpu-8"
+    key: mi355-dpx-load-2gpu-8
+    device: mi355_dpx_2
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 2gpu-9"
+    key: mi355-dpx-load-2gpu-9
+    device: mi355_dpx_2
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 2gpu-10"
+    key: mi355-dpx-load-2gpu-10
+    device: mi355_dpx_2
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 4gpu-1"
+    key: mi355-dpx-load-4gpu-1
+    device: mi355_dpx_4
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 4gpu-2"
+    key: mi355-dpx-load-4gpu-2
+    device: mi355_dpx_4
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 4gpu-3"
+    key: mi355-dpx-load-4gpu-3
+    device: mi355_dpx_4
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 4gpu-4"
+    key: mi355-dpx-load-4gpu-4
+    device: mi355_dpx_4
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 4gpu-5"
+    key: mi355-dpx-load-4gpu-5
+    device: mi355_dpx_4
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 4gpu-6"
+    key: mi355-dpx-load-4gpu-6
+    device: mi355_dpx_4
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 4gpu-7"
+    key: mi355-dpx-load-4gpu-7
+    device: mi355_dpx_4
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 4gpu-8"
+    key: mi355-dpx-load-4gpu-8
+    device: mi355_dpx_4
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 4gpu-9"
+    key: mi355-dpx-load-4gpu-9
+    device: mi355_dpx_4
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
+  - label: "MI355 DPX load-test 4gpu-10"
+    key: mi355-dpx-load-4gpu-10
+    device: mi355_dpx_4
+    dind: false
+    depends_on: [image-build-amd]
+    commands: ["pytest tests/basic_correctness/test_basic_correctness.py -x -q"]
