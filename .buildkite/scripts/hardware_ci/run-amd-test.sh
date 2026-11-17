@@ -107,12 +107,17 @@ fi
 # ---------------------------------------------------------------------------
 # DPX GPU partition lock
 # ---------------------------------------------------------------------------
-# DPX nodes expose exactly one GPU partition per pod. A host-wide lock file
-# prevents a second job from landing on the same device simultaneously.
+# DPX pods receive exactly $gpus render devices via DRA ResourceClaimTemplate.
+# For single-GPU DPX a host-wide flock guards against a second agent job landing
+# on the same partition (belt-and-suspenders; DRA should already prevent this).
+# For multi-GPU DPX the ResourceClaimTemplate allocates the full set of
+# partitions exclusively to one pod, so no host lock is needed.
 _acquire_dpx_lock() {
   local dev=(/dev/dri/renderD*)
-  [[ ${#dev[@]} == 1 ]] \
-    || { echo "DPX: expected exactly one render device, found ${#dev[@]}" >&2; return 1; }
+  [[ ${#dev[@]} == "$gpus" ]] \
+    || { echo "DPX: expected exactly $gpus render device(s), found ${#dev[@]}" >&2; return 1; }
+  # Multi-GPU: DRA exclusivity is sufficient; skip the flock.
+  [[ $gpus -gt 1 ]] && return 0
   mkdir -p "$HF_HOME/.vllm-dpx-locks"
   exec 9>>"$HF_HOME/.vllm-dpx-locks/$(stat -Lc %t-%T "${dev[0]}").lock"
   flock -w 600 9 || { echo "DPX GPU collision on ${dev[0]}" >&2; return 134; }
